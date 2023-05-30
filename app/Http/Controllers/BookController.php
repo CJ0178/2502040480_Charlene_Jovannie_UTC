@@ -11,9 +11,11 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $books = Book::all();
+        $latestBooks = Book::latest('created_at')->take(4)->get();
+
+        return view("home", compact("books", 'latestBooks'));
     }
 
     /**
@@ -35,9 +37,10 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Book $book)
-    {
-        //
+    public function show($id){
+        $book = Book::find($id);
+
+        return view("detail" ,compact("book"));
     }
 
     /**

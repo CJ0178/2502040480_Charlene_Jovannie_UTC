@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+
+    public function Detail(){
+        return $this->hasOne(Detail::class);
+    }
 }
